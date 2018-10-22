@@ -1,5 +1,5 @@
 <!-- Marketing Firm -->
-##Marketing Firm User Stories
+## Marketing Firm User Stories
 As a marketing firm I want to collect data on what products are most interesting to potential clients so that I can maximize revenue.
 
 As a marketing firm I want to have multiple images presented to focus group members at a time so that they must make a choice.
@@ -12,7 +12,7 @@ As a marketing firm I want to have a test environment that is not asthetically d
 
 
 <!-- Focus Group Member -->
-##Focus Group Member User Stories
+## Focus Group Member User Stories
 As a focus group member I would like to see a broad variety of images so that I can know all the cool stuff that is out there.
 
 As a focus group member I want to know that my participation matters so that I feel validated in my decision to join this study.
@@ -25,7 +25,7 @@ As a focus group member I want to only be presented with a limited number of cho
 
 
 <!-- Developer -->
-##Developer User Stories
+## Developer User Stories
 As a developer I want to produce a lean, DRY, bug free product so that my client will hire me again.
 
 As a developer I want to ensure that randomization is used and duplication is limited so that the Focus Group members and Marketing Firm get accurate data.
