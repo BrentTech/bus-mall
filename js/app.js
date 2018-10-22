@@ -2,6 +2,7 @@
 
 // ++++++++++++++++++++++++++++++ DATA +++++++++++++++++++++++++++++++
 var allProducts = [];
+var randomizerNumbers = [];
 var optionOne = document.getElementById('optionOne');
 var optionTwo = document.getElementById('optionTwo');
 var optionThree = document.getElementById('optionThree');
@@ -37,39 +38,22 @@ new Product('Fashion Forward Watering Can', 'img/water-can.jpg');
 new Product('Half Spillproof Wine Glass', 'img/wine-glass.jpg');
 
 // ++++++++++++++++++++++++++++++ DECLARE FUNCTIONS +++++++++++++++++++++++++++++++
-function productRandomizer1() {
+
+function productRandomizer(productOption) {
   var idx = Math.floor(Math.random() * allProducts.length)
   console.log(idx);
   
-  optionOne.src = allProducts[idx].filePath;
-  optionOne.alt = allProducts[idx].productName;
-  optionOne.title = allProducts[idx].productName;
+  productOption.src = allProducts[idx].filePath;
+  productOption.alt = allProducts[idx].productName;
+  productOption.title = allProducts[idx].productName;
+
+  randomizerNumbers.push(idx);
 }
-
-function productRandomizer2() {
-  var idx = Math.floor(Math.random() * allProducts.length)
-  console.log(idx);
-  
-  optionTwo.src = allProducts[idx].filePath;
-  optionTwo.alt = allProducts[idx].productName;
-  optionTwo.title = allProducts[idx].productName;
-}
-
-function productRandomizer3() {
-  var idx = Math.floor(Math.random() * allProducts.length)
-  console.log(idx);
-  
-  optionThree.src = allProducts[idx].filePath;
-  optionThree.alt = allProducts[idx].productName;
-  optionThree.title = allProducts[idx].productName;
-}
-
-productRandomizer1();
-
-productRandomizer2();
-
-productRandomizer3();
-
 
 
 // ++++++++++++++++++++++++++++++ EXICUTABLES +++++++++++++++++++++++++++++++
+
+
+productRandomizer(optionOne);
+productRandomizer(optionTwo);
+productRandomizer(optionThree);
