@@ -39,21 +39,30 @@ new Product('Half Spillproof Wine Glass', 'img/wine-glass.jpg');
 
 // ++++++++++++++++++++++++++++++ DECLARE FUNCTIONS +++++++++++++++++++++++++++++++
 
-function productRandomizer(productOption) {
+function randomizer() {
   var idx = Math.floor(Math.random() * allProducts.length)
   console.log(idx);
-  
-  productOption.src = allProducts[idx].filePath;
-  productOption.alt = allProducts[idx].productName;
-  productOption.title = allProducts[idx].productName;
-
+  while (randomizerNumbers.includes(idx)) {
+    idx = Math.floor(Math.random() * allProducts.length)
+    randomizerNumbers.push(idx);
+  }
   randomizerNumbers.push(idx);
 }
 
+randomizer();
+randomizer();
+randomizer();
+
+console.log(randomizerNumbers);
 
 // ++++++++++++++++++++++++++++++ EXICUTABLES +++++++++++++++++++++++++++++++
+function generateProducts(productOption, idx){ 
 
+  productOption.src = allProducts[idx].filePath;
+  productOption.alt = allProducts[idx].productName;
+  productOption.title = allProducts[idx].productName;
+}
 
-productRandomizer(optionOne);
-productRandomizer(optionTwo);
-productRandomizer(optionThree);
+  productRandomizer(optionOne, randomizerNumbers);
+  productRandomizer(optionTwo);
+  productRandomizer(optionThree);
