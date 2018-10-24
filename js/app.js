@@ -1,4 +1,13 @@
 'use strict';
+// ++++++++++++++++++++++++++++++ DATA +++++++++++++++++++++++++++++++
+
+// (ls exists) {
+//   Retrieve/parse
+//   Assign to allProducts
+//   } else {
+//   Create instances
+//   }
+  
 
 // ++++++++++++++++++++++++++++++ DATA +++++++++++++++++++++++++++++++
 var allProducts = [];
@@ -51,25 +60,27 @@ function randomizer() {
 
 function generateProducts() {
   var randomProducts = [];
-
+  console.log(justViewed);
+  
   var firstProduct = randomizer();
   while(justViewed.includes(firstProduct)) {
     firstProduct = randomizer();
   }
-  randomProducts.push(firstProduct)
+  randomProducts.push(firstProduct);
 
   var secondProduct = randomizer();
-  while (randomProducts[0] === secondProduct || justViewed.includes(secondProduct)) {
+  while (justViewed.includes(secondProduct) || randomProducts.includes(secondProduct)) {
     secondProduct = randomizer();
   }
   randomProducts.push(secondProduct);
   
   var thirdProduct = randomizer();
-  while (randomProducts[0] === thirdProduct || randomProducts[1] === thirdProduct || justViewed.includes(thirdProduct)) {
+  while (justViewed.includes(thirdProduct) || randomProducts.includes(thirdProduct)) {
     thirdProduct = randomizer();
   }
   randomProducts.push(thirdProduct);
 
+  justViewed = randomProducts;
   return randomProducts;
 }
 
@@ -108,7 +119,8 @@ function handleClick(event) {
 
   if (totalClicks === 25) {
     container.removeEventListener('click', handleClick);
-    // showList();
+    // showList();  <- remnant code to present vote tallies in list form
+    localStorage.setItem('cacheAllProducts', JSON.stringify(allProducts));
     storeChartData();
     drawChart();
     return;
@@ -161,6 +173,9 @@ function drawChart() {
       },
     },
     scales: {
+      scaleLabel: {
+        fontSize: 8,
+      },
       yAxes: [{
         ticks: {
           display: true,
