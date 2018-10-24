@@ -60,7 +60,6 @@ function randomizer() {
 
 function generateProducts() {
   var randomProducts = [];
-  console.log(justViewed);
   
   var firstProduct = randomizer();
   while(justViewed.includes(firstProduct)) {
