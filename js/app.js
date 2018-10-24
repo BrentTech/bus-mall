@@ -2,7 +2,6 @@
 
 // ++++++++++++++++++++++++++++++ DATA +++++++++++++++++++++++++++++++
 var allProducts = [];
-// var randomizerNumbers = [];
 var optionOne = document.getElementById('optionOne');
 var optionTwo = document.getElementById('optionTwo');
 var optionThree = document.getElementById('optionThree');
@@ -10,6 +9,9 @@ var container = document.getElementById('product-container');
 var productList = document.getElementById('product-list');
 var totalClicks = 0;
 var justViewed = [];
+var productName = [];
+var voteTally = [];
+var marketingChart;
 
 
 function Product(name, filepath) {
@@ -104,9 +106,11 @@ function handleClick(event) {
     }
   }
 
-  if (totalClicks === 4) {
+  if (totalClicks === 25) {
     container.removeEventListener('click', handleClick);
-    showList();
+    // showList();
+    storeChartData();
+    drawChart();
     return;
   }
   displayOptions();
@@ -119,6 +123,54 @@ function showList() {
     productList.appendChild(liEl);
   }
 }
+
+function storeChartData() {
+  for(var i = 0; i < allProducts.length; i++) {
+    productName[i] = allProducts[i].productName;
+    voteTally[i] = allProducts[i].numberOfClicks;
+  }
+}
+
+var data = {
+  labels: productName,
+  datasets: [{
+    data: voteTally,
+    backgroundColor: [
+      'red', 'blue', 'green', 'orange', 'yellow',
+      'magenta', 'navy', 'gray', 'fuscia', 'purple',
+      'black', 'salmon', 'lightblue', 'aqua', 'darkgray',
+      'bisque', 'burlywood', 'pink', 'tan', 'brown'
+    ],
+    borderWidth: 3,
+  }]
+};
+
+function drawChart() {
+  var ctx = document.getElementById('chart-of-results').getContext('2d');
+  marketingChart = new Chart(ctx, {
+    type: 'bar',
+    data: data,
+    options: {
+      responsive: true,
+      animation: {
+        duration: 1000,
+        easing: 'easeInCubic'
+      },
+      legend: {
+        display: false,
+      },
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          display: true,
+          fontFamily: 'sans-serif',
+        }
+      }]
+    }
+  });
+}
+
 
 // ++++++++++++++++++++++++++++++ EXICUTABLES +++++++++++++++++++++++++++++++
 displayOptions();
