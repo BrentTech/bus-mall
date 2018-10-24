@@ -106,7 +106,7 @@ function handleClick(event) {
     }
   }
 
-  if (totalClicks === 25) {
+  if (totalClicks === 5) {
     container.removeEventListener('click', handleClick);
     // showList();
     storeChartData();
@@ -142,7 +142,6 @@ var data = {
       'bisque', 'burlywood', 'pink', 'tan', 'brown'
     ],
     borderWidth: 3,
-    // hoverBorderColor: [black],
   }]
 };
 
@@ -152,21 +151,26 @@ function drawChart() {
     type: 'bar',
     data: data,
     options: {
-      responsive: false,
+      responsive: true,
       animation: {
         duration: 1000,
         easing: 'easeInCubic'
-      }
+      },
+      legend: {
+        display: false,
+      },
     },
     scales: {
       yAxes: [{
         ticks: {
-          beginAtZero:true
+          display: true,
+          fontFamily: 'sans-serif',
         }
       }]
     }
-  })
+  });
 }
+
 
 // ++++++++++++++++++++++++++++++ EXICUTABLES +++++++++++++++++++++++++++++++
 displayOptions();
