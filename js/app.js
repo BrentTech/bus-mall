@@ -60,7 +60,6 @@ function randomizer() {
 
 function generateProducts() {
   var randomProducts = [];
-  console.log(justViewed);
   
   var firstProduct = randomizer();
   while(justViewed.includes(firstProduct)) {
@@ -144,7 +143,7 @@ function storeChartData() {
 }
 
 var data = {
-  labels: productName,
+  labels: ['R2D2 Bag', 'Banana Slicer', 'Bathroom Entertainment Center', 'Hipster Rain Boots', 'Breakfast All-In-One', 'Meatball Bubblegum', 'Bumpy Chair', 'Cthulhu Statuette', 'Duck Dog Muzzle', 'Can-O-Dragon Meat', 'Silverware Pen Caps', 'Pet Sweeping Footies', 'Pizza Scissors', 'JAWS Sleeping Bag', 'Baby Broom Jumpsuit', 'TaunTaun Sleeping Bag', 'Can-O-Unicorn Meat', 'Wiggling Tentacle USB', 'Fashion Forward Watering Can', 'Half Spillproof Wine Glass'],
   datasets: [{
     data: voteTally,
     backgroundColor: [
